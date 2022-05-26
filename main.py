@@ -2,6 +2,7 @@ from random import randint
 import telebot
 from image_parsing import YandexImage
 # Our modules
+from support import supports
 from webhook import Webhook
 from location import Geolocator
 from voice_recognition import VoiceRecognizer
@@ -101,7 +102,7 @@ def recognize_voice(message):
 @bot.message_handler(content_types=['text'])
 def func(message):
     if (message.text == 'Техническая поддержка 🤖'):
-        bot.send_message(message.chat.id, text='@theorly')
+        bot.send_message(message.chat.id, text=supports[randint(0, 1)].support())
     elif (message.text == 'О боте 💀'):
         text = ''
         text += 'Данный бот поможет определиться на местности, '
